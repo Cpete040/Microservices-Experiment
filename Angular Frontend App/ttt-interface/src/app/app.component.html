@@ -1,0 +1,24 @@
+<body>
+    <section>
+        <h1 class="game--title">Tic Tac Toe</h1>
+        <div class="game--container">
+            <div *ngFor="let cell of game.state; index as i" (click)="selectCell(i)" [attr.data-cell-index]="i" class="cell">{{game.state[i]}}</div>
+        </div>
+        <h2 class="game--status"></h2>
+        <div>{{winnerMessage}}</div>
+        <button (click)="restart()" class="game--restart">Restart Game</button>
+    </section>
+    <div class="table-header">Previous Games</div>
+    <table *ngIf="games" class="games-table">
+        <tr>
+          <th>ID</th>
+          <th>Cells</th>
+          <th>Winner</th>
+        </tr>
+        <tr *ngFor="let game of games">
+          <td>{{game.id}}</td>
+          <td>{{game.state}}</td>
+          <td>{{game.winner}}</td>
+        </tr>
+      </table>
+</body>
